@@ -1,0 +1,192 @@
+#include <iostream>
+#include <type_traits>
+
+// TODO: class DimensionedValue
+// TODO: Label text
+// TODO: Translation?
+// TODO: Unit tests (gmock?)
+// TODO: Build system (cmake+ninja)
+
+enum class FundamentalDimension
+{
+    LENGTH,
+    MASS,
+    TIME,
+    ELECTRIC_CURRENT,
+    TEMPERATURE
+};
+
+class Dimension
+{
+public:
+    Dimension() = delete;
+    constexpr Dimension( const Dimension& ) = default;
+    constexpr Dimension( const FundamentalDimension& dim ) :
+        m_numer_length( dim == FundamentalDimension::LENGTH ? 1 : 0 ),
+        m_numer_mass( dim == FundamentalDimension::MASS ? 1 : 0 ),
+        m_numer_time( dim == FundamentalDimension::TIME ? 1 : 0 ),
+        m_numer_current( dim == FundamentalDimension::ELECTRIC_CURRENT ? 1 : 0),
+        m_numer_temperature( dim == FundamentalDimension::TEMPERATURE ? 1 : 0),
+        m_denom_length( 0 ),
+        m_denom_mass( 0 ),
+        m_denom_time( 0 ),
+        m_denom_current( 0 ),
+        m_denom_temperature( 0 )
+    {
+    }
+
+    Dimension& operator=( const Dimension& ) = default;
+    Dimension& operator*=( const Dimension& rhs )
+    {
+        *this = *this * rhs;
+        return *this;
+    }
+    Dimension& operator/=( const Dimension& rhs )
+    {
+        *this = *this / rhs;
+        return *this;
+    }
+
+    friend bool operator==( const Dimension& lhs, const Dimension& rhs )
+    {
+        return lhs.m_numer_length == rhs.m_numer_length &&
+            lhs.m_numer_mass == rhs.m_numer_mass &&
+            lhs.m_numer_time == rhs.m_numer_time &&
+            lhs.m_numer_current == rhs.m_numer_current &&
+            lhs.m_numer_temperature == rhs.m_numer_temperature &&
+            lhs.m_denom_length == rhs.m_denom_length &&
+            lhs.m_denom_mass == rhs.m_denom_mass &&
+            lhs.m_denom_time == rhs.m_denom_time &&
+            lhs.m_denom_current == rhs.m_denom_current &&
+            lhs.m_denom_temperature == rhs.m_denom_temperature;
+    }
+    friend bool operator!=( const Dimension& lhs, const Dimension& rhs )
+    {
+        return !(lhs == rhs);
+    }
+
+    friend constexpr Dimension operator*(
+        const Dimension& lhs, const Dimension& rhs )
+    {
+        return Dimension(
+            lhs.m_numer_length + rhs.m_numer_length,
+            lhs.m_numer_mass + rhs.m_numer_mass,
+            lhs.m_numer_time + rhs.m_numer_time,
+            lhs.m_numer_current + rhs.m_numer_current,
+            lhs.m_numer_temperature + rhs.m_numer_temperature,
+            lhs.m_denom_length + rhs.m_denom_length,
+            lhs.m_denom_mass + rhs.m_denom_mass,
+            lhs.m_denom_time + rhs.m_denom_time,
+            lhs.m_denom_current + rhs.m_denom_current,
+            lhs.m_denom_temperature + rhs.m_denom_temperature );
+    }
+    friend constexpr Dimension operator/(
+        const Dimension& lhs, const Dimension& rhs )
+    {
+        return Dimension(
+            lhs.m_numer_length + rhs.m_denom_length,
+            lhs.m_numer_mass + rhs.m_denom_mass,
+            lhs.m_numer_time + rhs.m_denom_time,
+            lhs.m_numer_current + rhs.m_denom_current,
+            lhs.m_numer_temperature + rhs.m_denom_temperature,
+            lhs.m_denom_length + rhs.m_numer_length,
+            lhs.m_denom_mass + rhs.m_numer_mass,
+            lhs.m_denom_time + rhs.m_numer_time,
+            lhs.m_denom_current + rhs.m_numer_current,
+            lhs.m_denom_temperature + rhs.m_numer_temperature );
+    }
+
+private:
+    static constexpr unsigned int reduced(unsigned int numer, unsigned int denom )
+    {
+        return (numer > denom) ? numer - denom : 0;
+    }
+
+    constexpr Dimension(
+            unsigned int n_length,
+            unsigned int n_mass,
+            unsigned int n_time,
+            unsigned int n_current,
+            unsigned int n_temperature,
+
+            unsigned int d_length,
+            unsigned int d_mass,
+            unsigned int d_time,
+            unsigned int d_current,
+            unsigned int d_temperature ) :
+        m_numer_length( reduced( n_length, d_length ) ),
+        m_numer_mass( reduced( n_mass, d_mass ) ),
+        m_numer_time( reduced( n_time, d_time ) ),
+        m_numer_current( reduced( n_current, d_current ) ),
+        m_numer_temperature( reduced( n_temperature, d_temperature ) ),
+        m_denom_length( reduced( d_length, n_length ) ),
+        m_denom_mass( reduced( d_mass, n_mass ) ),
+        m_denom_time( reduced( d_time, n_time ) ),
+        m_denom_current( reduced( d_current, n_current ) ),
+        m_denom_temperature( reduced( d_temperature, n_temperature ) )
+    {
+    }
+
+    unsigned int m_numer_length;
+    unsigned int m_numer_mass;
+    unsigned int m_numer_time;
+    unsigned int m_numer_current;
+    unsigned int m_numer_temperature;
+
+    unsigned int m_denom_length;
+    unsigned int m_denom_mass;
+    unsigned int m_denom_time;
+    unsigned int m_denom_current;
+    unsigned int m_denom_temperature;
+};
+
+constexpr Dimension operator*( const Dimension& lhs, const FundamentalDimension& rhs )
+{
+    return lhs * Dimension( rhs );
+}
+constexpr Dimension operator/( const Dimension& lhs, const FundamentalDimension& rhs )
+{
+    return rhs / Dimension( rhs );
+}
+
+
+class Unit {
+public:
+    typedef double (*Conversion)( double );
+
+    constexpr Unit(
+            Dimension dim,
+            Conversion to_base,
+            Conversion from_base ) :
+        dimension( dim ),
+        ToBase( to_base ),
+        FromBase( from_base )
+    {
+    }
+
+    const Dimension dimension;
+    const Conversion ToBase;
+    const Conversion FromBase;
+};
+
+constexpr Unit operator*( const Unit& lhs, const Unit& rhs );
+constexpr Unit operator/( const Unit& lhs, const Unit& rhs );
+
+
+constexpr double AtoB(double val) { return val * 3; }
+constexpr double BtoA(double val) { return val / 3; }
+
+constexpr Dimension d =
+        FundamentalDimension::LENGTH *
+        FundamentalDimension::LENGTH *
+        FundamentalDimension::LENGTH /
+        FundamentalDimension::TIME;
+
+constexpr Unit bar(d, AtoB, BtoA);
+
+int main() {
+    std::cout << std::is_literal_type<Unit>::value << std::endl;
+
+    return 0;
+}
+
