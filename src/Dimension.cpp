@@ -5,20 +5,6 @@ static constexpr unsigned int reduced(unsigned int a, unsigned int b )
     return (a > b) ? a - b : 0;
 }
 
-constexpr Dimension::Dimension( const FundamentalDimension& dim ) :
-    m_numer_length( dim == FundamentalDimension::LENGTH ? 1 : 0 ),
-    m_numer_mass( dim == FundamentalDimension::MASS ? 1 : 0 ),
-    m_numer_time( dim == FundamentalDimension::TIME ? 1 : 0 ),
-    m_numer_current( dim == FundamentalDimension::ELECTRIC_CURRENT ? 1 : 0),
-    m_numer_temperature( dim == FundamentalDimension::TEMPERATURE ? 1 : 0),
-    m_denom_length( 0 ),
-    m_denom_mass( 0 ),
-    m_denom_time( 0 ),
-    m_denom_current( 0 ),
-    m_denom_temperature( 0 )
-{
-}
-
 Dimension& Dimension::operator*=( const Dimension& rhs )
 {
     *this = *this * rhs;
