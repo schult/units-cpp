@@ -49,14 +49,6 @@ DimensionedValue DimensionedValue::operator-() const
     return DimensionedValue( -m_value, m_dim );
 }
 
-DimensionedValue& DimensionedValue::operator=( DimensionedValue rhs )
-{
-    // TODO: Without a move assignment operator, this is infinitely recursive.
-    using std::swap;
-    swap( *this, rhs );
-    return *this;
-}
-
 DimensionedValue& DimensionedValue::operator+=( DimensionedValue rhs )
 {
     m_valid = m_valid && rhs.m_valid && (m_dim == rhs.m_dim);

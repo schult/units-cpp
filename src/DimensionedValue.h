@@ -23,7 +23,7 @@ public:
     DimensionedValue operator+() const;
     DimensionedValue operator-() const;
 
-    DimensionedValue& operator=( DimensionedValue rhs );
+    DimensionedValue& operator=( const DimensionedValue& rhs ) = default;
     DimensionedValue& operator+=( DimensionedValue rhs );
     DimensionedValue& operator-=( DimensionedValue rhs );
     DimensionedValue& operator*=( DimensionedValue rhs );

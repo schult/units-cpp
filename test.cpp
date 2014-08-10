@@ -4,7 +4,7 @@
 #include "src/DimensionedValue.h"
 #include "src/UnitDefinitions.h"
 
-// TODO: Label text
+// TODO: Label text - requires identity for Unit
 // TODO: Translation?
 // TODO: Unit tests (gmock?)
 // TODO: Build system (cmake+ninja)
