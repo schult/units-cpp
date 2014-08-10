@@ -5,7 +5,7 @@ static constexpr double scale( double val )
 {
     return val * multiplier / divisor;
 }
-#define SCALE(a, b) scale<b, a>, scale<a, b>
+#define SCALE(a, b) scale<a, b>, scale<b, a>
 
 namespace Units
 {
