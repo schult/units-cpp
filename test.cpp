@@ -1,7 +1,7 @@
 #include <iostream>
 #include <type_traits>
 
-#include "src/Unit.h"
+#include "src/UnitDefinitions.h"
 
 // TODO: class DimensionedValue
 // TODO: Label text
@@ -9,19 +9,16 @@
 // TODO: Unit tests (gmock?)
 // TODO: Build system (cmake+ninja)
 
+constexpr double ToBase( double val ) { return val * 1000.0; }
+constexpr double FromBase( double val ) { return val / 1000.0; }
 
-constexpr double AtoB(double val) { return val * 3; }
-constexpr double BtoA(double val) { return val / 3; }
+constexpr Dimension length =
+    FundamentalDimension::LENGTH *
+    FundamentalDimension::LENGTH;
+constexpr Unit foo( length, ToBase, FromBase );
 
-constexpr Dimension d =
-        FundamentalDimension::LENGTH *
-        FundamentalDimension::LENGTH *
-        FundamentalDimension::LENGTH /
-        FundamentalDimension::TIME;
-
-constexpr Unit bar(d, AtoB, BtoA);
-
-int main() {
+int main()
+{
     std::cout << std::is_literal_type<Unit>::value << std::endl;
 
     return 0;

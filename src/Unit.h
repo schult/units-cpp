@@ -3,10 +3,21 @@
 
 #include "Dimension.h"
 
+static constexpr double identity( double val ) { return val; }
+
 class Unit {
 public:
     typedef double (*Conversion)( double );
 
+    // Base units.
+    explicit constexpr Unit( Dimension dim ) :
+        dimension( dim ),
+        ToBase( identity ),
+        FromBase( identity )
+    {
+    }
+
+    // Units that conversion.
     constexpr Unit( Dimension dim, Conversion to_base, Conversion from_base ) :
         dimension( dim ),
         ToBase( to_base ),

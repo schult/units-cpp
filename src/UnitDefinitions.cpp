@@ -1,28 +1,27 @@
 #include "UnitDefinitions.h"
 
-static constexpr double identity( double val ) { return val; }
-
 template<int multiplier, int divisor>
 static constexpr double scale( double val )
 {
     return val * multiplier / divisor;
 }
+#define SCALE(a, b) scale<b, a>, scale<a, b>
 
 namespace Units
 {
 
-// Length =====================================================================
+// Length (meters) ============================================================
 static constexpr Dimension length = FundamentalDimension::LENGTH;
 
-Unit miles( length, scale<160934, 100>, scale<100, 160934> );
-Unit yards( length, scale<9144, 10000>, scale<10000, 9144> );
-Unit feet( length, scale<3048, 10000>, scale<10000, 3048> );
-Unit inches( length, scale<254, 10000>, scale<10000, 254> );
+const Unit miles( length, SCALE( 160934, 100 ) );
+const Unit yards( length, SCALE( 9144, 10000 ) );
+const Unit feet( length, SCALE( 3048, 10000 ) );
+const Unit inches( length, SCALE( 254, 10000 ) );
 
-Unit kilometers( length, scale<1000, 1>, scale<1, 1000> );
-Unit meters( length, identity, identity );
-Unit centimeters( length, scale<1, 100>, scale<100, 1> );
-Unit millimeters( length, scale<1, 1000>, scale<1000, 1> );
+const Unit kilometers( length, SCALE( 1000, 1 ) );
+const Unit meters( length );
+const Unit centimeters( length, SCALE( 1, 100 ) );
+const Unit millimeters( length, SCALE( 1, 1000 ) );
 
 } // namespace Units
 

@@ -6,17 +6,17 @@
 namespace Units
 {
 
-// Length =====================================================================
+// Length (meters) ============================================================
 
-extern Unit miles;
-extern Unit yards;
-extern Unit feet;
-extern Unit inches;
+extern const Unit miles;
+extern const Unit yards;
+extern const Unit feet;
+extern const Unit inches;
 
-extern Unit kilometers;
-extern Unit meters;
-extern Unit centimeters;
-extern Unit millimeters;
+extern const Unit kilometers;
+extern const Unit meters;
+extern const Unit centimeters;
+extern const Unit millimeters;
 
 } // namespace Units
 
