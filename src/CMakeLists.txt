@@ -5,6 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(HEADERS
     Dimension.h
+    DimensionedValue.h
     Unit.h
 
     UnitDefinitions.h
@@ -12,6 +13,7 @@ set(HEADERS
 
 set(SOURCES
     Dimension.cpp
+    DimensionedValue.cpp
 
     UnitDefinitions.cpp
 )
