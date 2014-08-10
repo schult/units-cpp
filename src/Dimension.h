@@ -43,7 +43,7 @@ public:
         const Dimension& lhs, const Dimension& rhs );
 
 private:
-    static constexpr unsigned int reduced(unsigned int a, unsigned int b )
+    static constexpr unsigned int Reduced(unsigned int a, unsigned int b )
     {
         return (a > b) ? a - b : 0;
     }
@@ -60,17 +60,17 @@ private:
             unsigned int d_time,
             unsigned int d_current,
             unsigned int d_temperature ) :
-        m_numer_length( reduced( n_length, d_length ) ),
-        m_numer_mass( reduced( n_mass, d_mass ) ),
-        m_numer_time( reduced( n_time, d_time ) ),
-        m_numer_current( reduced( n_current, d_current ) ),
-        m_numer_temperature( reduced( n_temperature, d_temperature ) ),
+        m_numer_length( Reduced( n_length, d_length ) ),
+        m_numer_mass( Reduced( n_mass, d_mass ) ),
+        m_numer_time( Reduced( n_time, d_time ) ),
+        m_numer_current( Reduced( n_current, d_current ) ),
+        m_numer_temperature( Reduced( n_temperature, d_temperature ) ),
 
-        m_denom_length( reduced( d_length, n_length ) ),
-        m_denom_mass( reduced( d_mass, n_mass ) ),
-        m_denom_time( reduced( d_time, n_time ) ),
-        m_denom_current( reduced( d_current, n_current ) ),
-        m_denom_temperature( reduced( d_temperature, n_temperature ) )
+        m_denom_length( Reduced( d_length, n_length ) ),
+        m_denom_mass( Reduced( d_mass, n_mass ) ),
+        m_denom_time( Reduced( d_time, n_time ) ),
+        m_denom_current( Reduced( d_current, n_current ) ),
+        m_denom_temperature( Reduced( d_temperature, n_temperature ) )
     {
     }
 

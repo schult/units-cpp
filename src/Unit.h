@@ -3,9 +3,10 @@
 
 #include "Dimension.h"
 
-static constexpr double identity( double val ) { return val; }
-
 class Unit {
+private:
+    static constexpr double identity( double val ) { return val; }
+
 public:
     typedef double (*Conversion)( double );
 
