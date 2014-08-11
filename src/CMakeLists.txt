@@ -9,6 +9,7 @@ set(HEADERS
     Unit.h
 
     UnitDefinitions.h
+    UnitText.h
 )
 
 set(SOURCES
@@ -16,6 +17,7 @@ set(SOURCES
     DimensionedValue.cpp
 
     UnitDefinitions.cpp
+    UnitText.cpp
 )
 
 add_library(Units ${SOURCES} ${HEADERS})

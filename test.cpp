@@ -3,11 +3,10 @@
 
 #include "src/DimensionedValue.h"
 #include "src/UnitDefinitions.h"
+#include "src/UnitText.h"
 
-// TODO: Label text - requires identity for Unit
 // TODO: Translation?
 // TODO: Unit tests (gmock?)
-// TODO: Build system (cmake+ninja)
 
 constexpr double ToBase( double val ) { return val * 1000.0; }
 constexpr double FromBase( double val ) { return val / 1000.0; }
@@ -26,7 +25,7 @@ int main()
     DimensionedValue d2( 1.0, Units::yards );
     DimensionedValue d3 = d1 + d2;
 
-    std::cout << d3.As( Units::feet ) << std::endl;
+    std::cout << d3.As( Units::feet ) << " " << Units::Abbr( Units::feet ) << std::endl;
 
     return 0;
 }
