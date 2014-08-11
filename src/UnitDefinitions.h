@@ -43,6 +43,20 @@ extern const Unit celcius;
 
 extern const Unit fahrenheit;
 
+// Area (square meters) =======================================================
+
+extern const Unit square_meters;
+extern const Unit hectares;
+
+extern const Unit acres;
+
+// Volume (cubic meters) ======================================================
+
+extern const Unit milliliters;
+extern const Unit cubic_centimeters;
+extern const Unit liters;
+extern const Unit cubic_meters;
+
 } // namespace Units
 
 #endif // UNITS_UNIT_DEFINITIONS_H

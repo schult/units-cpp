@@ -27,6 +27,10 @@ int main()
 
     std::cout << d3.As( Units::feet ) << " " << Units::Abbr( Units::feet ) << std::endl;
 
+    DimensionedValue d4( 1.0, Units::kilograms );
+
+    std::cout << d4.As( Units::pounds ) << " " << Units::Abbr( Units::pounds) << std::endl;
+
     return 0;
 }
 

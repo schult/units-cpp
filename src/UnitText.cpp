@@ -20,30 +20,44 @@ static const std::unordered_map<const Unit *, const char *> abbreviation = {
     { &yards, "yd" },
     { &miles, "mi" },
 
-    // Mass (kilograms) =======================================================
+    // Mass ===================================================================
 
     { &grams, "g" },
     { &kilograms, "kg" },
 
     { &pounds, "lbs" },
 
-    // Time (seconds) =========================================================
+    // Time ===================================================================
 
     { &milliseconds, "ms" },
     { &seconds, "s" },
     { &minutes, "min" },
     { &hours, "hrs" },
 
-    // Electric Current (amperes) =============================================
+    // Electric Current =======================================================
 
     { &amperes, "A" },
 
-    // Temperature (kelvin) ===================================================
+    // Temperature ============================================================
 
     { &kelvin, "K" },
     { &celcius, "°C" },
 
-    { &fahrenheit, "°F" }
+    { &fahrenheit, "°F" },
+
+    // Area ===================================================================
+
+    { &square_meters, "m²" },
+    { &hectares, "ha" },
+
+    { &acres, "ac" },
+
+    // Volume =================================================================
+
+    { &milliliters, "mL" },
+    { &cubic_centimeters, "cm³" },
+    { &liters, "L" },
+    { &cubic_meters, "m³" }
 };
 
 const char *Abbr( const Unit& u, int n )

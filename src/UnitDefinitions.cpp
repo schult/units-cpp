@@ -72,5 +72,21 @@ const Unit celcius( temperature, CelciusToBase, CelciusFromBase );
 
 const Unit fahrenheit( temperature, FahrenheitToBase, FahrenheitFromBase );
 
+// Area (square meters) =======================================================
+static constexpr Dimension area = length * length;
+
+const Unit square_meters( area );
+const Unit hectares( area, SCALE( 10000, 1 ) );
+
+const Unit acres( area, SCALE( 404686, 100 ) );
+
+// Volume (cubic meters) ======================================================
+static constexpr Dimension volume = area * length;
+
+const Unit milliliters( volume, SCALE( 1, 1000000 ) );
+const Unit cubic_centimeters( volume, SCALE( 1, 1000000 ) );
+const Unit liters( volume, SCALE( 1, 1000 ) );
+const Unit cubic_meters( volume );
+
 } // namespace Units
 
