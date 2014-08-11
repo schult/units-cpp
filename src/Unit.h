@@ -34,9 +34,5 @@ public:
     const Conversion FromBase;
 };
 
-// I'm not sure these can actually be implemented in C++11:
-constexpr Unit operator*( const Unit& lhs, const Unit& rhs );
-constexpr Unit operator/( const Unit& lhs, const Unit& rhs );
-
 #endif // UNITS_UNIT_H
 
