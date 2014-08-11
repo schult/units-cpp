@@ -26,6 +26,9 @@ public:
     {
     }
 
+    Unit( const Unit& ) = delete;
+    Unit& operator=( const Unit& ) = delete;
+
     const Dimension dimension;
     const Conversion ToBase;
     const Conversion FromBase;
