@@ -9,14 +9,41 @@ namespace Units
 
 static const std::unordered_map<const Unit *, const char *> abbreviation = {
     // Length =================================================================
-    { &miles, "mi" },
-    { &yards, "yd" },
-    { &feet, "ft" },
-    { &inches, "in" },
-    { &kilometers, "km" },
-    { &meters, "m" },
+
+    { &millimeters, "mm" },
     { &centimeters, "cm" },
-    { &millimeters, "mm" }
+    { &meters, "m" },
+    { &kilometers, "km" },
+
+    { &inches, "in" },
+    { &feet, "ft" },
+    { &yards, "yd" },
+    { &miles, "mi" },
+
+    // Mass (kilograms) =======================================================
+
+    { &grams, "g" },
+    { &kilograms, "kg" },
+
+    { &pounds, "lbs" },
+
+    // Time (seconds) =========================================================
+
+    { &milliseconds, "ms" },
+    { &seconds, "s" },
+    { &minutes, "min" },
+    { &hours, "hrs" },
+
+    // Electric Current (amperes) =============================================
+
+    { &amperes, "A" },
+
+    // Temperature (kelvin) ===================================================
+
+    { &kelvin, "K" },
+    { &celcius, "°C" },
+
+    { &fahrenheit, "°F" }
 };
 
 const char *Abbr( const Unit& u, int n )
