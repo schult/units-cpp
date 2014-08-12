@@ -6,7 +6,7 @@
 
 TEST(DimensionTest, IsLiteralType)
 {
-    EXPECT_EQ( std::is_literal_type<Dimension>::value, 1 );
+    EXPECT_TRUE( std::is_literal_type<Dimension>::value );
 }
 
 TEST(DimensionTest, Reduction)

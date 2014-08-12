@@ -6,6 +6,6 @@
 
 TEST(UnitTest, IsLiteralType)
 {
-    EXPECT_EQ( std::is_literal_type<Unit>::value, 1 );
+    EXPECT_TRUE( std::is_literal_type<Unit>::value );
 }
 
