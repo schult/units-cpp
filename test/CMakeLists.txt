@@ -7,6 +7,7 @@ set(HEADERS
 
 set(SOURCES
     DimensionTest.cpp
+    UnitTest.cpp
 )
 
 include_directories(${Units_SOURCE_DIR}/src ${GTEST_INCLUDES})
