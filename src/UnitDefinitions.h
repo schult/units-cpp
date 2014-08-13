@@ -67,6 +67,10 @@ extern const Unit degrees;
 extern const Unit radians_per_second;
 extern const Unit rpm;
 
+// Ratio ======================================================================
+
+extern const Unit percent;
+
 } // namespace Units
 
 #endif // UNITS_UNIT_DEFINITIONS_H

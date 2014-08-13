@@ -123,5 +123,10 @@ static constexpr Dimension angular_velocity =
 const Unit radians_per_second( angular_velocity );
 const Unit rpm( angular_velocity, RpmToBase, RpmFromBase );
 
+// Ratio ======================================================================
+static constexpr Dimension ratio;
+
+const Unit percent( ratio, SCALE( 100, 1 ) );
+
 } // namespace Units
 
