@@ -13,6 +13,6 @@ set(SOURCES
 include_directories(${Units_SOURCE_DIR}/src ${GTEST_INCLUDES})
 add_executable(UnitsTest ${SOURCES} ${HEADERS})
 target_link_libraries(UnitsTest Units ${GTEST_LIBS})
-add_test(NAME UnitsTest COMMAND UnitsTest)
-add_dependencies(check UnitsTest)
+
+add_custom_target(check COMMAND UnitsTest DEPENDS UnitsTest)
 
