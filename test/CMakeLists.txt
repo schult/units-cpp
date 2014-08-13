@@ -14,5 +14,5 @@ include_directories(${Units_SOURCE_DIR}/src ${GTEST_INCLUDES})
 add_executable(UnitsTest ${SOURCES} ${HEADERS})
 target_link_libraries(UnitsTest Units ${GTEST_LIBS})
 
-add_custom_target(check COMMAND UnitsTest DEPENDS UnitsTest)
+add_custom_target(check COMMAND UnitsTest --gtest_color=yes DEPENDS UnitsTest)
 
