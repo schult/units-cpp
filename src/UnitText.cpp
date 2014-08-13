@@ -62,7 +62,12 @@ static const std::unordered_map<const Unit *, const char *> abbreviation = {
     // Angle ==================================================================
 
     { &radians, "rad" },
-    { &degrees, "°" }
+    { &degrees, "°" },
+
+    // Angular Velocity =======================================================
+
+    { &radians_per_second, "rad/s" },
+    { &rpm, "rpm" }
 };
 
 const char *Abbr( const Unit& u, int n )

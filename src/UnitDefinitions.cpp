@@ -39,6 +39,16 @@ static constexpr double DegreesFromBase( double val )
     return val * 180.0 / M_PI;
 }
 
+static constexpr double RpmToBase( double val )
+{
+    return val * (2*M_PI) / 60.0;
+}
+
+static constexpr double RpmFromBase( double val )
+{
+    return val * 60.0 / (2*M_PI);
+}
+
 namespace Units
 {
 
@@ -105,6 +115,13 @@ static constexpr Dimension angle;
 
 const Unit radians( angle );
 const Unit degrees( angle, DegreesToBase, DegreesFromBase );
+
+// Angular Velocity (radians per second) ======================================
+static constexpr Dimension angular_velocity =
+    Dimension() / FundamentalDimension::TIME;
+
+const Unit radians_per_second( angular_velocity );
+const Unit rpm( angular_velocity, RpmToBase, RpmFromBase );
 
 } // namespace Units
 

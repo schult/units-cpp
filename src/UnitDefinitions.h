@@ -62,6 +62,11 @@ extern const Unit cubic_meters;
 extern const Unit radians;
 extern const Unit degrees;
 
+// Angular Velocity (radians per second) ======================================
+
+extern const Unit radians_per_second;
+extern const Unit rpm;
+
 } // namespace Units
 
 #endif // UNITS_UNIT_DEFINITIONS_H
