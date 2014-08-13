@@ -57,7 +57,12 @@ static const std::unordered_map<const Unit *, const char *> abbreviation = {
     { &milliliters, "mL" },
     { &cubic_centimeters, "cm³" },
     { &liters, "L" },
-    { &cubic_meters, "m³" }
+    { &cubic_meters, "m³" },
+
+    // Angle ==================================================================
+
+    { &radians, "rad" },
+    { &degrees, "°" }
 };
 
 const char *Abbr( const Unit& u, int n )

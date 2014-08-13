@@ -57,6 +57,11 @@ extern const Unit cubic_centimeters;
 extern const Unit liters;
 extern const Unit cubic_meters;
 
+// Angle (radians) ============================================================
+
+extern const Unit radians;
+extern const Unit degrees;
+
 } // namespace Units
 
 #endif // UNITS_UNIT_DEFINITIONS_H

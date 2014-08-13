@@ -1,5 +1,7 @@
 #include "UnitDefinitions.h"
 
+#include <cmath>
+
 template<int multiplier, int divisor>
 static constexpr double Scale( double val )
 {
@@ -25,6 +27,16 @@ static constexpr double FahrenheitToBase( double val )
 static constexpr double FahrenheitFromBase( double val )
 {
     return (val * 9.0 / 5.0) - 459.67;
+}
+
+static constexpr double DegreesToBase( double val )
+{
+    return val * M_PI / 180.0;
+}
+
+static constexpr double DegreesFromBase( double val )
+{
+    return val * 180.0 / M_PI;
 }
 
 namespace Units
@@ -87,6 +99,12 @@ const Unit milliliters( volume, SCALE( 1, 1000000 ) );
 const Unit cubic_centimeters( volume, SCALE( 1, 1000000 ) );
 const Unit liters( volume, SCALE( 1, 1000 ) );
 const Unit cubic_meters( volume );
+
+// Angle (radians) ============================================================
+static constexpr Dimension angle;
+
+const Unit radians( angle );
+const Unit degrees( angle, DegreesToBase, DegreesFromBase );
 
 } // namespace Units
 
