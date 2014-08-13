@@ -11,14 +11,15 @@ TEST(DimensionTest, IsLiteralType)
 
 TEST(DimensionTest, Reduction)
 {
-    Dimension n =
-        FundamentalDimension::MASS *
-        FundamentalDimension::MASS *
-        FundamentalDimension::MASS;
-    Dimension d =
-        FundamentalDimension::MASS *
-        FundamentalDimension::MASS;
+    const Dimension length = FundamentalDimension::LENGTH;
+    const Dimension time = FundamentalDimension::TIME;
+    const Dimension hertz = Dimension() / FundamentalDimension::TIME;
+    const Dimension velocity =
+        FundamentalDimension::LENGTH / FundamentalDimension::TIME;
 
-    EXPECT_EQ( n/d, Dimension( FundamentalDimension::MASS ) );
+    EXPECT_EQ( velocity / velocity, Dimension() );
+    EXPECT_EQ( velocity * time, length );
+    EXPECT_EQ( velocity / length, hertz );
+    EXPECT_EQ( velocity / hertz, length );
 }
 

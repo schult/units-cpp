@@ -1,6 +1,8 @@
 #ifndef UNITS_DIMENSION_H
 #define UNITS_DIMENSION_H
 
+#include <iostream>
+
 enum class FundamentalDimension
 {
     LENGTH,
@@ -55,8 +57,11 @@ public:
     friend constexpr Dimension operator/(
         const Dimension& lhs, const Dimension& rhs );
 
+    friend std::ostream& operator<<(
+        std::ostream& stream, const Dimension& dim );
+
 private:
-    static constexpr unsigned int Reduced(unsigned int a, unsigned int b )
+    static constexpr unsigned int Reduced( unsigned int a, unsigned int b )
     {
         return (a > b) ? a - b : 0;
     }
@@ -139,8 +144,10 @@ constexpr Dimension operator*(
 constexpr Dimension operator/(
     const Dimension& lhs, const FundamentalDimension& rhs )
 {
-    return rhs / Dimension( rhs );
+    return lhs / Dimension( rhs );
 }
+
+std::ostream& operator<<( std::ostream& stream, const Dimension& dim );
 
 #endif // UNITS_DIMENSION_H
 
