@@ -5,7 +5,7 @@ find_package(Qt5LinguistTools)
 find_package(Qt5Widgets)
 
 set(LANG
-    translations/units_es-AR.ts
+    translations/units.es_AR.ts
 )
 
 qt5_wrap_cpp(MOC
