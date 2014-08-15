@@ -1,10 +1,15 @@
 #ifndef UNITS_UNIT_DEFINITIONS_H
 #define UNITS_UNIT_DEFINITIONS_H
 
+#include <QString>
+
 #include "Unit.h"
 
 namespace Units
 {
+
+// Get a unit's symbol translated into the current locale.
+QString Translate( const Unit& u );
 
 // Length (meters) ============================================================
 

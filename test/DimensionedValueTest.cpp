@@ -14,13 +14,13 @@ static constexpr double Scale( double val )
 class DimensionedValueTest : public ::testing::Test {
 protected:
     DimensionedValueTest() :
-        length_units1( FundamentalDimension::LENGTH ),
-        length_units2( FundamentalDimension::LENGTH, SCALE( 2, 1 ) ),
-        time_units1( FundamentalDimension::TIME ),
-        area_units2(
+        length_units1( "L1", FundamentalDimension::LENGTH ),
+        length_units2( "L2", FundamentalDimension::LENGTH, SCALE( 2, 1 ) ),
+        time_units1( "T1", FundamentalDimension::TIME ),
+        area_units2( "A1",
             FundamentalDimension::LENGTH * FundamentalDimension::LENGTH,
             SCALE( 2, 1 ) ),
-        velocity_units2(
+        velocity_units2( "V1",
             FundamentalDimension::LENGTH / FundamentalDimension::TIME,
             SCALE( 2, 1 ) )
     {

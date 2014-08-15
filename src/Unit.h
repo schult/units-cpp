@@ -11,7 +11,8 @@ public:
     typedef double (*Conversion)( double );
 
     // Base units.
-    explicit constexpr Unit( Dimension dim ) :
+    explicit constexpr Unit( const char *sym, Dimension dim ) :
+        symbol( sym ),
         dimension( dim ),
         ToBase( identity ),
         FromBase( identity )
@@ -19,7 +20,9 @@ public:
     }
 
     // Units that conversion.
-    constexpr Unit( Dimension dim, Conversion to_base, Conversion from_base ) :
+    constexpr Unit( const char *sym, Dimension dim,
+            Conversion to_base, Conversion from_base ) :
+        symbol( sym ),
         dimension( dim ),
         ToBase( to_base ),
         FromBase( from_base )
@@ -29,6 +32,7 @@ public:
     Unit( const Unit& ) = delete;
     Unit& operator=( const Unit& ) = delete;
 
+    const char * const symbol;
     const Dimension dimension;
     const Conversion ToBase;
     const Conversion FromBase;

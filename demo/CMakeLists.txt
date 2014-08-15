@@ -12,10 +12,13 @@ qt5_wrap_cpp(MOC
 )
 
 set(HEADERS
+    UnitDefinitions.h
 )
 
 set(SOURCES
     main.cpp
+
+    UnitDefinitions.cpp
 )
 
 qt5_wrap_ui(UI

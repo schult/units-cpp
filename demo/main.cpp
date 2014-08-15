@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include "UnitDefinitions.h"
+
 int main( int argc, char **argv )
 {
     QApplication app( argc, argv );
@@ -17,7 +19,7 @@ int main( int argc, char **argv )
     (void)translator.load( "demo/units_es-Ar.qm" );
     app.installTranslator( &translator );
 
-    const QString mm_symbol( app.translate( "Units", "mm" ) );
+    const QString mm_symbol = Units::Translate( Units::millimeters );
     std::cout << mm_symbol.toUtf8().constData() << std::endl;
 
     return app.exec();
