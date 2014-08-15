@@ -12,9 +12,9 @@ int main( int argc, char **argv )
     QLocale::setDefault( locale );
 
     QTranslator translator;
-    //translator.load( locale, "units", ".", "src" );
+    //translator.load( locale, "units", ".", "demo" );
     // directory: QLibraryInfo::location( QLibraryInfo::TranslationsPath )
-    (void)translator.load( "src/units_es-Ar.qm" );
+    (void)translator.load( "demo/units_es-Ar.qm" );
     app.installTranslator( &translator );
 
     const QString mm_symbol( app.translate( "Units", "mm" ) );
