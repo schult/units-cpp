@@ -1,12 +1,14 @@
 #ifndef UNITS_UNIT_TEXT_H
 #define UNITS_UNIT_TEXT_H
 
+#include <QString>
+
 class Unit;
 
 namespace Units
 {
 
-const char *Abbr( const Unit& u, int n = 1 );
+QString Abbr( const Unit& u );
 
 } // namespace Units
 
