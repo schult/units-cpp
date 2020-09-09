@@ -29,8 +29,8 @@ public:
     {
     }
 
-    Unit( const Unit& ) = delete;
-    Unit& operator=( const Unit& ) = delete;
+    Unit( const Unit& ) = default;
+    Unit& operator=( const Unit& ) = default;
 
     const char * const symbol;
     const Dimension dimension;

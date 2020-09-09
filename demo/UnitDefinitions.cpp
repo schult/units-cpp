@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include <QCoreApplication>
+#include <QStringList>
 #include <QtGlobal>
 
 template<int multiplier, int divisor>
@@ -58,6 +59,42 @@ namespace Units
 QString Translate( const Unit& u )
 {
     return QCoreApplication::translate( "Units", u.symbol );
+}
+
+QString Translate( const CompoundUnit& u )
+{
+    QStringList numerator;
+    QStringList denominator;
+
+    for ( auto unit : u.Numerator() )
+    {
+        numerator.append( Translate( unit ) );
+    }
+
+    for ( auto unit : u.Denominator() )
+    {
+        denominator.append( Translate( unit ) );
+    }
+
+    QString top = numerator.join( "⋅" );
+    QString bottom = denominator.join( "⋅" );
+
+    if ( top.isEmpty() && bottom.isEmpty() )
+    {
+        return "";
+    }
+
+    if ( bottom.isEmpty() )
+    {
+        return top;
+    }
+
+    if ( top.isEmpty() )
+    {
+        top = "1";
+    }
+
+    return top + "/" + bottom;
 }
 
 // Length (meters) ============================================================

@@ -1,0 +1,7 @@
+Compound units (e.g. bushels/acre)
+
+Qt Widgets/QML Components for display and editing
+    emit signal when units change (use to update label)
+    units source? auto-updater thingy.
+    changeEvent -- QEvent::LanguageChange
+

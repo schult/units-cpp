@@ -3,6 +3,7 @@
 
 #include <QString>
 
+#include "CompoundUnit.h"
 #include "Unit.h"
 
 namespace Units
@@ -10,6 +11,7 @@ namespace Units
 
 // Get a unit's symbol translated into the current locale.
 QString Translate( const Unit& u );
+QString Translate( const CompoundUnit& u );
 
 // Length (meters) ============================================================
 

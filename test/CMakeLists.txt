@@ -6,6 +6,7 @@ set(HEADERS
 )
 
 set(SOURCES
+    CompoundUnitTest.cpp
     DimensionedValueTest.cpp
     DimensionTest.cpp
     UnitTest.cpp
